@@ -74,7 +74,9 @@ class MainActivity : Activity() {
             else{
                 val dataAposentadoriaIdade = dataNasc.plusYears(idadeMin.toLong())
                 val dataAposentadoriaContribuicao = dataNasc.plusYears(tempoContMin.toLong())
-                textViewResultado.text = "data de aposentadoria por idade: $dataAposentadoriaIdade \n data de aposentadoria por contribuição: $dataAposentadoriaContribuicao"
+                val diasParaAposentarIdade = ChronoUnit.DAYS.between(diaAtual, dataAposentadoriaIdade)
+                val diasParaAposentarTrabalhando = ChronoUnit.DAYS.between(diaAtual, dataAposentadoriaContribuicao)
+                textViewResultado.text = "Faltam $diasParaAposentarIdade para aposentar, data de aposentadoria por idade: $dataAposentadoriaIdade \n Faltam $diasParaAposentarTrabalhando para aposentar, data de aposentadoria por contribuição: $dataAposentadoriaContribuicao"
 
             }
         }
